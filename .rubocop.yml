@@ -20,3 +20,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/LineLength:
   Max: 120
+
+RSpec/BeforeAfterAll:
+  Exclude:
+    - spec/spec/support/config/ffaker.rb
