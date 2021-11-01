@@ -6,4 +6,4 @@ Nothing special, but ready to work repo.
 
 Rails 6.1.4.1
 
-Ruby 2.7.1
+Ruby 3.0.2
