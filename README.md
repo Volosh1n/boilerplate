@@ -4,6 +4,6 @@ This is simple Rails boilerplate with basic installation of RSpec (including Fac
 Also, Dependabot enabled.
 Nothing special, but ready to work repo.
 
-Rails 6.1.4.1
+Rails 7.0.2.2
 
-Ruby 3.0.2
+Ruby 3.1.0
