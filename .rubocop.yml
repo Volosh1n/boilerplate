@@ -1,7 +1,9 @@
-require:
+plugins:
+  - rubocop-factory_bot
+  - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
-  - rubocop-performance
+  - rubocop-rspec_rails
 
 AllCops:
   NewCops: enable
@@ -9,8 +11,7 @@ AllCops:
     - bin/**/*
     - vendor/**/*
     - tmp/**/*
-    - node_modules/**/*
-    - db/schema.rb
+    - db/*schema.rb
 
 Style/Documentation:
   Enabled: false

@@ -1,35 +1,42 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby file: '.ruby-version'
 
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', require: false
 gem 'ffaker'
-gem 'jbuilder', '~> 2.11'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 5.6'
-gem 'rails', '~> 7.0.2'
-gem 'sass-rails', '>= 6'
-gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 5.4'
+gem 'image_processing', '~> 1.2'
+gem 'importmap-rails'
+gem 'jbuilder'
+gem 'pg', '~> 1.1'
+gem 'propshaft'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 8.1.4', '>= 8.1.4.1'
+gem 'solid_cable'
+gem 'solid_cache'
+gem 'solid_queue'
+gem 'stimulus-rails'
+gem 'turbo-rails'
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'listen', '~> 3.7'
+  gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'rubocop-rspec_rails', require: false
+  gem 'web-console'
 end
