@@ -4,4 +4,27 @@ updates:
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      rails:
+        patterns:
+          - "rails"
+          - "importmap-rails"
+          - "propshaft"
+          - "solid_*"
+          - "stimulus-rails"
+          - "turbo-rails"
+      rubocop:
+        patterns:
+          - "rubocop*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      github-actions:
+        patterns:
+          - "*"

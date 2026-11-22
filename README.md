@@ -1,7 +1,7 @@
 # README
 
 This is simple Rails boilerplate with basic installation of RSpec (including FactoryBot and Shoulda Matchers) and Rubocop.
-Also, Dependabot enabled.
+Also, Dependabot and GitHub Actions CI (RSpec, RuboCop, Brakeman, bundler-audit, importmap audit) enabled.
 Nothing special, but ready to work repo.
 
 Frontend: Importmap, Propshaft, Turbo, Stimulus.

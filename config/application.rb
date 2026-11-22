@@ -40,5 +40,8 @@ module Boilerplate
     config.generators.system_tests = nil
     config.generators.test_framework :rspec
     config.generators.fixture_replacement :factory_bot, dir: 'spec/factories'
+
+    # Active Storage image variants are off. To enable them, add the image_processing gem and remove this line.
+    config.active_storage.variant_processor = :disabled
   end
 end

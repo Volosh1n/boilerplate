@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
 gem 'bootsnap', require: false
-gem 'ffaker'
-gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -23,7 +21,7 @@ group :development, :test do
   gem 'bundler-audit', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails'
-  gem 'pry-rails'
+  gem 'ffaker'
   gem 'rspec-rails'
 end
 
