@@ -12,4 +12,12 @@ Rails 8.1.4.1
 
 Ruby 4.0.10
 
-Setup: `bin/setup`, run: `bin/dev`, tests: `bundle exec rspec`, lint: `bundle exec rubocop`.
+## Start a new project from this template
+
+1. `bundle install`
+2. `bin/rename my_app` — renames the app module, database names, page title and PWA manifest. Delete `bin/rename` afterwards.
+3. `bin/rails credentials:edit` — creates `config/master.key` and `config/credentials.yml.enc` with `secret_key_base`.
+   Needed for production only: development and test work without credentials.
+4. `bin/setup` — creates the databases and starts the server.
+
+Run: `bin/dev`, tests: `bundle exec rspec`, lint: `bundle exec rubocop`.

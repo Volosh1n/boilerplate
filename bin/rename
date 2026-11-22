@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+# Renames an app created from this template, the same way `rails new <name>` names it:
+#   bin/rename my_app   # => module MyApp, databases my_app_*, title "My App"
+# Run it once, before bin/setup, then delete this file.
+require_relative '../config/boot'
+require 'active_support'
+require 'active_support/core_ext/string'
+
+TEMPLATE_NAME = 'boilerplate'.freeze
+RESERVED_NAMES = %w[application destroy plugin runner test].freeze
+
+original = ARGV.first.to_s.strip
+abort 'Usage: bin/rename my_app' if original.empty?
+
+name = original.parameterize(preserve_case: true).underscore
+const = name.gsub(/\W/, '_').squeeze('_').camelize
+title = name.titleize
+
+abort "Invalid application name #{original}." if name.empty?
+abort "Invalid application name #{original}. Please give a name which does not start with numbers." if const.match?(/\A\d/)
+abort "Invalid application name #{original}. Reserved names: #{RESERVED_NAMES.join(', ')}." if RESERVED_NAMES.include?(name)
+abort "Invalid application name #{original}, constant #{const} is already in use." if Object.const_defined?(const)
+abort "The app is already named #{TEMPLATE_NAME}." if name == TEMPLATE_NAME
+
+template_const = TEMPLATE_NAME.camelize
+
+replacements = {
+  'config/application.rb' => { "module #{template_const}" => "module #{const}" },
+  'config/database.yml' => { TEMPLATE_NAME.upcase => name.upcase, TEMPLATE_NAME => name },
+  'app/views/layouts/application.html.erb' => { template_const => title },
+  'app/views/pwa/manifest.json.erb' => { template_const => const }
+}
+
+root = File.expand_path('..', __dir__)
+
+updated = replacements.to_h do |path, pairs|
+  content = File.read(File.join(root, path))
+  pairs.each_key do |from|
+    abort "#{path} does not contain \"#{from}\". Has the app been renamed already?" unless content.include?(from)
+  end
+  [path, pairs.reduce(content) { |text, (from, to)| text.gsub(from, to) }]
+end
+
+updated.each do |path, content|
+  File.write(File.join(root, path), content)
+  puts "  updated  #{path}"
+end
+
+puts <<~DONE
+
+  Renamed to #{const} (databases: #{name}_*, title: "#{title}").
+  Next: bin/rails credentials:edit (only needed for production), bin/setup.
+  You can delete bin/rename now.
+DONE
